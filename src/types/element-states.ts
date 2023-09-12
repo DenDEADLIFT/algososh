@@ -3,3 +3,8 @@ export enum ElementStates {
   Changing = "changing",
   Modified = "modified",
 }
+
+export type TInput = {
+  name: string;
+  color: ElementStates
+}

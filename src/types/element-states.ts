@@ -6,5 +6,10 @@ export enum ElementStates {
 
 export type TInput = {
   name: string;
+  color: ElementStates;
+}
+
+export type TValueNumber = {
+  value: number;
   color: ElementStates
 }

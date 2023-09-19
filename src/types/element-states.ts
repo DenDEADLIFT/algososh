@@ -5,6 +5,8 @@ export enum ElementStates {
 }
 
 export type TInput = {
+  head?: boolean;
+  tail?: boolean;
   name: string;
   color: ElementStates;
 }
@@ -12,4 +14,10 @@ export type TInput = {
 export type TValueNumber = {
   value: number;
   color: ElementStates
+}
+
+export type TinitialLoader = {
+  add: boolean,
+  delete: boolean,
+  clear: boolean,
 }

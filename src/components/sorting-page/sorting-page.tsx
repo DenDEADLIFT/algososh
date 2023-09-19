@@ -9,7 +9,7 @@ import { selectionSort } from './selection-sort-alg'
 import { Column } from '../ui/column/column'
 import { RadioInput } from '../ui/radio-input/radio-input'
 import { randomArray } from '../../utils/random-array'
-
+ 
 export const SortingPage: FC = () => {
 
   const [numbersArr, setMumbersArr] = useState<TValueNumber[]>([])

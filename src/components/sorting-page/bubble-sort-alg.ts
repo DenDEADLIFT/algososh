@@ -2,7 +2,7 @@ import { TValueNumber, ElementStates } from '../../types/element-states'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
 import { SetStateAction, Dispatch } from 'react'
 import { swap } from '../string/string-alg'
-
+ 
 export const bubbleSort = async (
   onTop: boolean,
   arr: TValueNumber[],

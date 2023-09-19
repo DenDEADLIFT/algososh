@@ -58,6 +58,7 @@ export const QueuePage: FC = () => {
           placeholder="Введите значение"
           value={inputValue}
           onChange={(e) => handleChange(e)}
+          extraClass="mr-25"
         />
         <Button
           text="Добавить"
@@ -76,6 +77,7 @@ export const QueuePage: FC = () => {
           disabled={queue.isEmpty() || isLoader.add || isLoader.delete}
           onClick={clear}
           isLoader={isLoader.clear}
+          extraClass="ml-40"
         />
       </form>
       <div className={styles.result}>

@@ -1,52 +1,47 @@
 import styles from './queue-page.module.css'
 import { FC, SyntheticEvent, useState } from "react"
 import { SolutionLayout } from '../ui/solution-layout/solution-layout'
-import { queue } from './queue-page-alg'
-import { ElementStates, TinitialLoader } from '../../types/element-states'
+import { queue } from './queue-page-class'
+import { ElementStates } from '../../types/element-states'
 import { Input } from '../ui/input/input'
 import { Button } from '../ui/button/button'
 import { Circle } from '../ui/circle/circle'
+import { initialLoaderQueue } from '../../constants/initial-states'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
 
 export const QueuePage: FC = () => {
 
-  const initialLoader: TinitialLoader = {
-    add: false,
-    delete: false,
-    clear: false,
-  }
-
   const [inputValue, setInputValue] = useState("")
   const [symbolsArr, setSymbolsArr] = useState(queue.items)
-  const [isLoader, setIsLoader] = useState(initialLoader)
+  const [isLoader, setIsLoader] = useState({ initialLoaderQueue })
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)
 
   const addSymbol = async () => {
     if (inputValue) {
-      setIsLoader({ add: true, delete: false, clear: false })
+      setIsLoader((prevState) => ({ ...prevState, add: true }))
       queue.enqueue({ name: inputValue, color: ElementStates.Changing })
       setInputValue('')
       setSymbolsArr([...queue.items])
       await delay(SHORT_DELAY_IN_MS)
       queue.getContainer()[queue.tail - 1].color = ElementStates.Default
-      setIsLoader({ add: false, delete: false, clear: false })
+      setIsLoader((prevState) => ({ ...prevState, add: false }))
     }
   }
 
   const deleteSymbol = async () => {
-    setIsLoader({ add: false, delete: true, clear: false })
+    setIsLoader((prevState) => ({ ...prevState, delete: true }))
     queue.getContainer()[queue.head].color = ElementStates.Changing
     await delay(SHORT_DELAY_IN_MS)
     queue.dequeue()
     setSymbolsArr([...queue.items])
-    setIsLoader({ add: false, delete: false, clear: false })
+    setIsLoader((prevState) => ({ ...prevState, delete: false }))
   }
 
   const clear = () => {
     queue.clear()
     setSymbolsArr([...queue.items])
-    setIsLoader({ add: false, delete: false, clear: false })
+    setIsLoader((prevState) => ({ ...prevState, add: false, delete: false, clear: false }))
   }
 
   return (
@@ -64,19 +59,19 @@ export const QueuePage: FC = () => {
           text="Добавить"
           disabled={inputValue ? false : true}
           onClick={addSymbol}
-          isLoader={isLoader.add}
+          isLoader={isLoader.initialLoaderQueue.add}
         />
         <Button
           text="Удалить"
-          disabled={queue.head === queue.tail ? true : false || isLoader.add}
+          disabled={queue.head === queue.tail ? true : false || isLoader.initialLoaderQueue.add}
           onClick={deleteSymbol}
-          isLoader={isLoader.delete}
+          isLoader={isLoader.initialLoaderQueue.delete}
         />
         <Button
           text="Очистить"
-          disabled={queue.isEmpty() || isLoader.add || isLoader.delete}
+          disabled={queue.isEmpty() || isLoader.initialLoaderQueue.add || isLoader.initialLoaderQueue.delete}
           onClick={clear}
-          isLoader={isLoader.clear}
+          isLoader={isLoader.initialLoaderQueue.clear}
           extraClass="ml-40"
         />
       </form>

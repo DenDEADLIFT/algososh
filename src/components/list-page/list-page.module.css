@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    width: 952px;
+    margin: 0 auto;
+    gap: 12px;
+    padding-bottom: 12px;
+}
+
+.index_container {
+    display: flex;
+    width: 952px;
+    margin: 0 auto;
+    gap: 12px;
+    padding-bottom: 120px;
+}
+
+.result {
+    position:relative;
+    width: 980px;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.under_element {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.add_element {
+    position: absolute;
+    top: -70px;
+    left: 14px;
+}
+
+.delete_element {
+    position: absolute;
+    bottom: -90px;
+    left: 12px;
+}
+
+.input {
+    width: 204px;
+}
+
+.big_button {
+    width: 362px;
+}
+
+.small_button {
+    width: 175px;
+}

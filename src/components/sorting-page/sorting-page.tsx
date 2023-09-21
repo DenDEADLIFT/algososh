@@ -2,13 +2,13 @@ import styles from './sorting-page.module.css'
 import { FC, useState, ChangeEvent } from "react"
 import { SolutionLayout } from '../ui/solution-layout/solution-layout'
 import { Button } from '../ui/button/button'
-import { TValueNumber, ElementStates } from '../../types/element-states'
+import { TValueNumber } from '../../types/element-states'
 import { Direction } from '../../types/direction'
 import { bubbleSort } from './bubble-sort-alg'
 import { selectionSort } from './selection-sort-alg'
 import { Column } from '../ui/column/column'
 import { RadioInput } from '../ui/radio-input/radio-input'
-import { randomArray } from '../../utils/random-array'
+import { newArray } from '../../utils/random-array'
  
 export const SortingPage: FC = () => {
 
@@ -19,18 +19,6 @@ export const SortingPage: FC = () => {
 
   const checkboxChange = (e: ChangeEvent<HTMLInputElement>) => {
     setCheckbox(e.target.value)
-  }
-
-  const newArray = (min: number, max: number) => {
-
-    let arr = [];
-    for (let i = 0; i <= randomArray(min, max); i++)
-      arr.push({
-        value: Math.floor(Math.random() * 100),
-        color: ElementStates.Default,
-      });
-    return arr;
-
   }
 
   const sortOnTop = () => {
@@ -50,7 +38,7 @@ export const SortingPage: FC = () => {
     }
   };
 
-  console.log(onTop)
+
   return (
     <SolutionLayout title="Сортировка массива">
       <form className={styles.container}>

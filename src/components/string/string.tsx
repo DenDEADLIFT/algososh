@@ -68,11 +68,11 @@ export const StringComponent: FC = () => {
           linkedList="small"
         />
       </form>
-      <ul className={styles.result}>
+      <div className={styles.result}>
         {stringArr.map((item: TInput, index: number) => (
-            <Circle letter={item.name} state={item.color} />
+          <Circle letter={item.name} state={item.color} />
         ))}
-      </ul>
+      </div>
     </SolutionLayout>
   );
 };

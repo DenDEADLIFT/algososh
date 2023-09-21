@@ -5,20 +5,17 @@ import { Input } from '../ui/input/input'
 import { Button } from '../ui/button/button'
 import { Circle } from '../ui/circle/circle'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
-import { ElementStates, TinitialLoader, TInput } from '../../types/element-states'
-import { stack } from './stack-page-alg'
+import { ElementStates, TInput } from '../../types/element-states'
+import { initialLoaderStack } from '../../constants/initial-states'
+import { stack } from './stack-page-class'
 
 export const StackPage: FC = () => {
 
-  const initialLoader: TinitialLoader = {
-    add: false,
-    delete: false,
-    clear: false,
-  }
 
-  const [inputValue, setInputValue] = useState<string>("")
+
+  const [inputValue, setInputValue] = useState<string>('')
   const [symbolsArr, setSymbolsArr] = useState<TInput[]>(stack.items)
-  const [isLoader, setIsLoader] = useState(initialLoader)
+  const [isLoader, setIsLoader] = useState(initialLoaderStack)
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)
 

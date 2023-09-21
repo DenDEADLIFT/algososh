@@ -1,5 +1,5 @@
 import styles from './fibonacci.module.css'
-import { FC, useState, FormEvent, SyntheticEvent, ChangeEvent } from "react"
+import { FC, useState, SyntheticEvent } from "react"
 import { SolutionLayout } from "../ui/solution-layout/solution-layout"
 import { createFibonacci } from './fibonacci-alg'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'

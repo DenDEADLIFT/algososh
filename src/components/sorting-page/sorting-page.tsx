@@ -4,15 +4,17 @@ import { SolutionLayout } from '../ui/solution-layout/solution-layout'
 import { Button } from '../ui/button/button'
 import { TValueNumber } from '../../types/element-states'
 import { Direction } from '../../types/direction'
-import { bubbleSort } from './bubble-sort-alg'
-import { selectionSort } from './selection-sort-alg'
+import { useBubbleSort } from './bubble-sort-alg'
+import { useSelectionSort } from './selection-sort-alg'
 import { Column } from '../ui/column/column'
 import { RadioInput } from '../ui/radio-input/radio-input'
 import { newArray } from '../../utils/random-array'
- 
+
 export const SortingPage: FC = () => {
 
-  const [numbersArr, setMumbersArr] = useState<TValueNumber[]>([])
+  const { bubbleSort, arr } = useBubbleSort()
+  const { selectionSort, arrSelect } = useSelectionSort()
+  const [numbersArr, setMumbersArr] = useState<TValueNumber[]>(newArray(3, 17))
   const [checkbox, setCheckbox] = useState('select')
   const [onTop, setOnTop] = useState<boolean>(false)
   const [onDown, setOnDown] = useState<boolean>(false)
@@ -21,23 +23,31 @@ export const SortingPage: FC = () => {
     setCheckbox(e.target.value)
   }
 
-  const sortOnTop = () => {
+  const sortOnTop = async () => {
+    setOnTop(true)
+    setOnDown(false)
     if (checkbox === "select") {
-      selectionSort(true, numbersArr, setMumbersArr, setOnTop, setOnDown)
+      await selectionSort(true, numbersArr)
+      setMumbersArr(arrSelect)
     } else {
-      bubbleSort(true, numbersArr, setMumbersArr, setOnTop, setOnDown)
+      await bubbleSort(true, numbersArr)
+      setMumbersArr(arr)
     }
-
+    setOnTop(false)
   }
 
-  const sortOnDown = () => {
+  const sortOnDown = async () => {
+    setOnTop(false)
+    setOnDown(true)
     if (checkbox === "select") {
-      selectionSort(false, numbersArr, setMumbersArr, setOnTop, setOnDown)
+      await selectionSort(false, numbersArr)
+      setMumbersArr(arrSelect)
     } else {
-      bubbleSort(false, numbersArr, setMumbersArr, setOnTop, setOnDown)
+      await bubbleSort(false, numbersArr)
+      setMumbersArr(arr)
     }
-  };
-
+    setOnDown(false)
+  }
 
   return (
     <SolutionLayout title="Сортировка массива">

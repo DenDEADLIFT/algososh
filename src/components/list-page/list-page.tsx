@@ -10,7 +10,7 @@ import { ArrowIcon } from '../ui/icons/arrow-icon'
 import { randomArray } from '../../utils/random-array'
 import { initialStateList } from '../../constants/initial-states'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
-
+ 
 const newStringsArray = (min: number, max: number) => {
   const length = randomArray(min, max)
   return Array.from({ length }, () => Math.floor(Math.random() * 100).toString())

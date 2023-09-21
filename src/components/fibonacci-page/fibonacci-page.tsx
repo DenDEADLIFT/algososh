@@ -40,7 +40,7 @@ export const FibonacciPage: FC = () => {
           isLoader={loader}
           type="submit"
           text="Рассчитать"
-          disabled={inputValue < 1}
+          disabled={inputValue < 1 || inputValue > 19}
           linkedList="small"
           onClick={handleClick}
         />

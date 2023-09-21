@@ -70,7 +70,10 @@ export const StringComponent: FC = () => {
       </form>
       <div className={styles.result}>
         {stringArr.map((item: TInput, index: number) => (
-          <Circle letter={item.name} state={item.color} />
+          <Circle 
+          key={index}
+          letter={item.name} 
+          state={item.color} />
         ))}
       </div>
     </SolutionLayout>

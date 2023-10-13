@@ -9,7 +9,7 @@ import { Button } from '../ui/button/button'
 
 export const FibonacciPage: FC = () => {
 
-  const [inputValue, setInputValue] = useState<number>(0)
+  const [inputValue, setInputValue] = useState<number | null>(null)
   const [loader, setLoader] = useState<boolean>(false)
   const [numberArr, setNumberArr] = useState<number[]>([])
 
@@ -27,24 +27,28 @@ export const FibonacciPage: FC = () => {
 
   return (
     <SolutionLayout title="Последовательность Фибоначчи">
-      <form
+      <div
         className={styles.container}
       >
         <Input
           type="number"
+          maxLength={2}
           isLimitText={true}
           max={19}
           onChange={(e) => handleChange(e)}
+          value={inputValue ?? ''}
+          data-test="input"
         />
         <Button
           isLoader={loader}
           type="submit"
           text="Рассчитать"
-          disabled={inputValue < 1 || inputValue > 19}
+          disabled={inputValue === null || inputValue < 1 || inputValue > 19}
           linkedList="small"
           onClick={handleClick}
+          data-test="button"
         />
-      </form>
+      </div>
       <div className={styles.result}>
         {numberArr.map((item: number, key: number) =>
           <Circle

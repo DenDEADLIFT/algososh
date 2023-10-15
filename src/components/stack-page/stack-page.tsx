@@ -58,6 +58,7 @@ export const StackPage: FC = () => {
           value={`${inputValue}`}
           onChange={handleChange}
           extraClass="mr-25"
+          data-test="input"
         />
 
         <Button
@@ -65,12 +66,14 @@ export const StackPage: FC = () => {
           isLoader={isLoader.add}
           text="Добавить"
           disabled={inputValue ? false : true}
+          data-test="add-button"
         />
         <Button
           onClick={deleteSymbol}
           isLoader={isLoader.delete}
           text="Удалить"
           disabled={!symbolsArr.length ? true : false || isLoader.add}
+          data-test="delete-button"
         />
         <Button
           onClick={clear}
@@ -78,6 +81,7 @@ export const StackPage: FC = () => {
           disabled={isLoader.add || isLoader.delete || !symbolsArr.length}
           isLoader={isLoader.clear}
           extraClass="ml-40"
+          data-test="clear-button"
         />
       </div>
       <div className={styles.result}>

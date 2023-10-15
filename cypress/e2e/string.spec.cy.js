@@ -1,6 +1,8 @@
+import { endPoints, circle, circlesArr } from '../../src/constants/test-constants'
+
 describe('Страница запускается', function () {
     beforeEach(function () {
-        cy.visit("http://localhost:3000/recursion")
+        cy.visit(endPoints.str)
         cy.get('[data-test="input"]').as('input')
         cy.get('[data-test="button"]').as('button')
     })
@@ -14,16 +16,16 @@ describe('Страница запускается', function () {
         cy.get("input").type("012345").should("have.value", "012345")
         cy.contains("Развернуть").click()
 
-        cy.get('[class^=circle_content_').as('circle');
+        cy.get(circlesArr).as('circle');
 
         cy.get('@circle')
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '0');
+                    cy.wrap(item).find(circle).should('contain', '0');
                 }
                 if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '5');
+                    cy.wrap(item).find(circle).should('contain', '5');
                 }
             });
 
@@ -31,16 +33,16 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
                 }
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
                 }
             });
             
@@ -48,22 +50,22 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '5');
+                    cy.wrap(item).find(circle).should('contain', '5');
                 }
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '1');
+                    cy.wrap(item).find(circle).should('contain', '1');
                 }
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '4');
+                    cy.wrap(item).find(circle).should('contain', '4');
                 }
                 if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '0');
+                    cy.wrap(item).find(circle).should('contain', '0');
                 }
             });
 
@@ -71,16 +73,16 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
                 }
                 if (index === 2) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 3) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
                 }
             });
 
@@ -88,22 +90,22 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '5');
+                    cy.wrap(item).find(circle).should('contain', '5');
                 }
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '4');
+                    cy.wrap(item).find(circle).should('contain', '4');
                 }
                 if (index === 2) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '2');
+                    cy.wrap(item).find(circle).should('contain', '2');
                 }
                 if (index === 3) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '3');
+                    cy.wrap(item).find(circle).should('contain', '3');
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '1');
+                    cy.wrap(item).find(circle).should('contain', '1');
                 }
                 if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '0');
+                    cy.wrap(item).find(circle).should('contain', '0');
                 }
             });
 
@@ -111,33 +113,10 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 2) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
                 }
                 if (index === 3) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
-                }
-            });
-
-            cy.get('@circle')
-            .should('have.length', '6')
-            .each((item, index) => {
-                if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '5');
-                }
-                if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '4');
-                }
-                if (index === 2) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '3');
-                }
-                if (index === 3) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '2');
-                }
-                if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '1');
-                }
-                if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('contain', '0');
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
                 }
             });
 
@@ -145,22 +124,45 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '5');
                 }
                 if (index === 1) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '4');
                 }
                 if (index === 2) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '3');
                 }
                 if (index === 3) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '2');
                 }
                 if (index === 4) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '1');
                 }
                 if (index === 5) {
-                    cy.wrap(item).find('[class^=circle_circle__]').should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('contain', '0');
+                }
+            });
+
+            cy.get('@circle')
+            .should('have.length', '6')
+            .each((item, index) => {
+                if (index === 0) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                }
+                if (index === 1) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                }
+                if (index === 2) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                }
+                if (index === 3) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                }
+                if (index === 4) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                }
+                if (index === 5) {
+                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
                 }
             });
 

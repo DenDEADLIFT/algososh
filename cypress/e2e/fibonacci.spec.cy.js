@@ -1,8 +1,10 @@
-const arr = [0, 1, 1, 2, 3, 5, 8]
+import { endPoints, circle, circlesArr } from '../../src/constants/test-constants'
+
+const numbersArr = [0, 1, 1, 2, 3, 5, 8]
 
 describe('Страница запускается', function () {
     beforeEach(function () {
-        cy.visit("http://localhost:3000/fibonacci")
+        cy.visit(endPoints.fib)
         cy.get('[data-test="input"]').as('input')
         cy.get('[data-test="button"]').as('button')
     })
@@ -16,10 +18,10 @@ describe('Страница запускается', function () {
         cy.get('@input').type('5').should('have.value', '5')
         cy.contains('Рассчитать').should('not.be.disabled').click()
 
-        cy.get('[class^=circle_content_')
+        cy.get(circlesArr)
             .should('have.length', '6')
             .each((i, key) => {
-                cy.get(i).find('[class^=circle_circle__]').should('contain.text', arr[key])
+                cy.get(i).find(circle).should('contain.text', numbersArr[key])
             })
     })
 })

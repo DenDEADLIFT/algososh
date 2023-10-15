@@ -1,4 +1,4 @@
-import { endPoints, circle, circlesArr } from '../../src/constants/test-constants'
+import { endPoints, circle, circlesArr, states } from '../../src/constants/test-constants'
 
 describe('Страница запускается', function () {
     beforeEach(function () {
@@ -33,16 +33,16 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  states.Modified)
                 }
                 if (index === 1) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 4) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 5) {
-                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  states.Modified)
                 }
             });
             
@@ -56,10 +56,10 @@ describe('Страница запускается', function () {
                     cy.wrap(item).find(circle).should('contain', '1');
                 }
                 if (index === 1) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 4) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 4) {
                     cy.wrap(item).find(circle).should('contain', '4');
@@ -73,16 +73,16 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 1) {
-                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  states.Modified)
                 }
                 if (index === 2) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 3) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Changing)
                 }
                 if (index === 4) {
-                    cy.wrap(item).find(circle).should('have.css', 'border',  '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border',  states.Modified)
                 }
             });
 
@@ -113,10 +113,10 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 2) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 3) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
             });
 
@@ -147,22 +147,22 @@ describe('Страница запускается', function () {
             .should('have.length', '6')
             .each((item, index) => {
                 if (index === 0) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 1) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 2) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 3) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 4) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
                 if (index === 5) {
-                    cy.wrap(item).find(circle).should('have.css', 'border', '4px solid rgb(127, 224, 81)')
+                    cy.wrap(item).find(circle).should('have.css', 'border', states.Modified)
                 }
             });
 

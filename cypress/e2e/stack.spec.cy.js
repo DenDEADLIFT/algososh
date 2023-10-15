@@ -1,6 +1,7 @@
-import { endPoints, circle, circlesArr } from '../../src/constants/test-constants'
+import { endPoints, circle, circlesArr, states } from '../../src/constants/test-constants'
+import { SHORT_DELAY_IN_MS } from '../../src/constants/delays'
 
-describe("Страница запускается", function () {
+describe('Страница запускается', function () {
     beforeEach(() => {
         cy.visit(endPoints.stack)
         cy.get('[data-test="input"]').as('input')
@@ -9,32 +10,30 @@ describe("Страница запускается", function () {
         cy.get('[data-test="clear-button"]').as('clear-button')
     })
 
-    it("Инпут пустой и все кнопки неактивны", function () {
+    it('Инпут пустой и все кнопки неактивны', function () {
         cy.get('@input').should('be.empty')
         cy.get('@add-button').should('be.disabled')
         cy.get('@delete-button').should('be.disabled')
         cy.get('@clear-button').should('be.disabled')
     })
 
-    it("Добавление и удаление элемента", function () {
+    it('Добавление и удаление элемента', function () {
         cy.get('@input').type('1')
         cy.get('@add-button').should('not.be.disabled').click()
-        cy.get('input').should('be.empty')
+        cy.get('@input').should('be.empty')
 
         cy.get(circlesArr).as('circle')
 
         cy.get('@circle')
             .should('have.length', 1)
             .each((el) => {
-                cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
-            });
-
-        cy.wait(500)
+                cy.wrap(el).find(circle).should('have.css', 'border', states.Changing)
+            })
 
         cy.get('@circle')
             .each((el) => {
                 cy.wrap(el).find(circle).should('contain', '1')
-                cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(0, 50, 255)')
+                cy.wrap(el).find(circle).should('have.css', 'border', states.Default)
             })
 
         cy.get('@add-button').should('be.disabled')
@@ -48,16 +47,14 @@ describe("Страница запускается", function () {
             .should('have.length', 2)
             .each((el, i) => {
                 if (i === 1)
-                    cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
+                    cy.wrap(el).find(circle).should('have.css', 'border', states.Changing)
             });
-
-        cy.wait(500)
 
         cy.get('@circle')
             .each((el, i) => {
                 if (i === 1)
                     cy.wrap(el).find(circle).should('contain', '2')
-                cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(0, 50, 255)')
+                cy.wrap(el).find(circle).should('have.css', 'border', states.Default)
             })
 
         cy.get('@add-button').should('be.disabled')
@@ -69,26 +66,26 @@ describe("Страница запускается", function () {
             .should('have.length', 2)
             .each((el, i) => {
                 if (i === 1)
-                    cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(210, 82, 225)')
-            });
+                    cy.wrap(el).find(circle).should('have.css', 'border', states.Changing)
+            })
 
-        cy.wait(500)
+        cy.wait(SHORT_DELAY_IN_MS)
 
         cy.get('@circle')
             .each((el) => {
                 cy.wrap(el).find(circle).should('contain', '1')
-                cy.wrap(el).find(circle).should('have.css', 'border', '4px solid rgb(0, 50, 255)')
+                cy.wrap(el).find(circle).should('have.css', 'border', states.Default)
             })
     })
 
-    it("Очистка стэка", function () {
+    it('Очистка стэка', function () {
         cy.get('@input').type('1')
         cy.get('@add-button').should('not.be.disabled').click()
-        cy.get('input').should('be.empty')
-        
+        cy.get('@input').should('be.empty')
+
         cy.get('@input').type('2')
         cy.get('@add-button').should('not.be.disabled').click()
-        cy.get('input').should('be.empty')
+        cy.get('@input').should('be.empty')
 
         cy.get(circlesArr).as('circle')
 

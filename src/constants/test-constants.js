@@ -4,7 +4,9 @@ export const endPoints = {
     fib: baseUrl + 'fibonacci',
     str: baseUrl + 'recursion',
     stack: baseUrl + 'stack',
-    queue: baseUrl + 'queue'
+    queue: baseUrl + 'queue',
+    sort: baseUrl + 'sorting',
+    list: baseUrl + 'list',
 }
 
 export const circle = '[class^=circle_circle__]'

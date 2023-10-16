@@ -1,6 +1,6 @@
 import { endPoints, circle, circlesArr, states } from '../../src/constants/test-constants'
 import { SHORT_DELAY_IN_MS } from '../../src/constants/delays'
-
+ 
 describe('Страница запускается', function () {
     beforeEach(() => {
         cy.visit(endPoints.queue)

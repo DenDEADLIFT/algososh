@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer'
 import { render, screen, fireEvent } from "@testing-library/react"
 
 describe('Тест компонента Button', () => {
+
     it('Без текста', () => {
         const tree = renderer.create(<Button />).toJSON()
         expect(tree).toMatchSnapshot()

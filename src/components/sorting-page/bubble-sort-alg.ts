@@ -1,9 +1,10 @@
 import { TValueNumber, ElementStates } from '../../types/element-states'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
-import { useState } from 'react'
 import { swap } from '../string/string-alg'
 
-export async function sortArray(onTop: boolean, arr: TValueNumber[], setArr: (newArr: TValueNumber[]) => void) {
+
+export const bubbleSort = async (onTop: boolean, arr: TValueNumber[], setArr: (newArr: TValueNumber[]) => void) => {
+
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       arr[j].color = ElementStates.Changing
@@ -25,21 +26,8 @@ export async function sortArray(onTop: boolean, arr: TValueNumber[], setArr: (ne
       setArr([...arr])
       await delay(SHORT_DELAY_IN_MS)
     }
-    
   }
-  console.log(arr)
-    return arr
-}
-
-export const useBubbleSort = () => {
-
-  const [arr, setArr] = useState<TValueNumber[]>([])
-
-  const bubbleSort = async (onTop: boolean, arr: TValueNumber[]) => {
-    await sortArray(onTop, arr, setArr)
-
-    arr.map((i: TValueNumber) => { i.color = ElementStates.Modified })
-  }
-
-  return { arr, bubbleSort }
+console.log(arr)
+  arr.map((i: TValueNumber) => { i.color = ElementStates.Modified })
+  return arr
 }

@@ -1,40 +1,40 @@
-import { sortArray } from './bubble-sort-alg';
 import { ElementStates } from '../../types/element-states';
+import { bubbleSort } from './bubble-sort-alg'
 
 describe('Тест сортировки пузырьком', () => {
     it('Сортировка по возрастанию с пустым массивом', async () => {
-        const sortArr = await sortArray(true, [], jest.fn());
-        expect(sortArr).toEqual([]);
+        const arr = await bubbleSort(true, [], jest.fn());
+        expect(arr).toEqual([]);
     });
 
     it('Сортировка по возрастанию с одним элементом', async () => {
-        const sortArr = await sortArray(
+        const arr = await bubbleSort(
             true,
             [
-                { color: ElementStates.Modified, value: 42 }
+                { color: ElementStates.Default, value: 42 }
             ],
             jest.fn()
         );
-        expect(sortArr).toEqual([
+        expect(arr).toEqual([
             { color: ElementStates.Modified, value: 42 }
         ])
     })
 
     it('Сортировка по убыванию с одним элементом', async () => {
-        const sortArr = await sortArray(
+        const arr = await bubbleSort(
             false,
             [
-                { color: ElementStates.Modified, value: 42 }
+                { color: ElementStates.Default, value: 42 }
             ],
             jest.fn()
         );
-        expect(sortArr).toEqual([
+        expect(arr).toEqual([
             { color: ElementStates.Modified, value: 42 }
         ])
     })
 
     it('Сортировка по возрастанию с несколькими элементами', async () => {
-        const sortArr = await sortArray(
+        const arr = await bubbleSort(
             true,
             [
                 { color: ElementStates.Default, value: 42 },
@@ -43,15 +43,15 @@ describe('Тест сортировки пузырьком', () => {
             ],
             jest.fn()
         );
-        expect(sortArr).toEqual([
-            { color: ElementStates.Default, value: 10 },
+        expect(arr).toEqual([
+            { color: ElementStates.Modified, value: 10 },
             { color: ElementStates.Modified, value: 42 },
             { color: ElementStates.Modified, value: 61 },
         ])
     })
 
     it('Сортировка по убыванию с несколькими элементами', async () => {
-        const sortArr = await sortArray(
+        const arr = await bubbleSort(
             false,
             [
                 { color: ElementStates.Default, value: 42 },
@@ -60,8 +60,8 @@ describe('Тест сортировки пузырьком', () => {
             ],
             jest.fn()
         )
-        expect(sortArr).toEqual([
-            { color: ElementStates.Default, value: 61 },
+        expect(arr).toEqual([
+            { color: ElementStates.Modified, value: 61 },
             { color: ElementStates.Modified, value: 42 },
             { color: ElementStates.Modified, value: 10 },
         ])

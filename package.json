@@ -25,8 +25,7 @@
     "eject": "react-scripts eject",
     "cypress:open": ".\\node_modules\\.bin\\cypress open"
   },
-  "eslintConfig": {
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",

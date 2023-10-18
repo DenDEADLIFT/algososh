@@ -39,7 +39,7 @@ export const ListPage: FC = () => {
     setState((prevState) => ({ ...prevState, updatedIndexes: null, addingHead: false }))
 
   }
-
+ 
   const addingTail = async () => {
     setState((prevState) => ({ ...prevState, addingTail: true, indexAtTopCircle: linkedList.container.length - 2 }))
     if (!inputSymbols) return null
@@ -141,6 +141,7 @@ export const ListPage: FC = () => {
           value={inputSymbols}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setInputSymbols(e.currentTarget.value)}
           extraClass={styles.input}
+          data-test="string-input"
         />
         <Button
           text="Добавить в head"
@@ -149,6 +150,7 @@ export const ListPage: FC = () => {
             || state.deletingTail || state.addingByIndex || state.deletingByIndex}
           isLoader={state.addingHead}
           extraClass={styles.small_button}
+          data-test="add-to-head-button"
         />
         <Button
           text="Добавить в tail"
@@ -157,6 +159,7 @@ export const ListPage: FC = () => {
             || state.deletingTail || state.addingByIndex || state.deletingByIndex}
           isLoader={state.addingTail}
           extraClass={styles.small_button}
+          data-test="add-to-tail-button"
         />
         <Button
           text="Удалить из head"
@@ -165,6 +168,7 @@ export const ListPage: FC = () => {
           disabled={state.addingTail || state.addingHead
             || state.deletingTail || state.addingByIndex || state.deletingByIndex}
           extraClass={styles.small_button}
+          data-test="delete-from-head-button"
         />
         <Button
           text="Удалить из tail"
@@ -173,6 +177,7 @@ export const ListPage: FC = () => {
           disabled={state.addingTail || state.addingHead || state.deletingHead || state.addingByIndex
             || state.deletingByIndex}
           extraClass={styles.small_button}
+          data-test="delete-from-tail-button"
         />
       </div>
       <div className={styles.index_container}>
@@ -183,6 +188,7 @@ export const ListPage: FC = () => {
           onChange={(e: ChangeEvent<HTMLInputElement>) => { setInputIndex(Number(e.target.value)) }}
           value={inputIndex ?? ''}
           extraClass={styles.input}
+          data-test="number-input"
         />
         <Button
           text="Добавить по индексу"
@@ -191,6 +197,7 @@ export const ListPage: FC = () => {
             || state.deletingTail || state.addingTail || state.deletingByIndex}
           isLoader={state.addingByIndex}
           extraClass={styles.big_button}
+          data-test="add-to-index-button"
         />
         <Button
           text="Удалить по индексу"
@@ -199,6 +206,7 @@ export const ListPage: FC = () => {
             || state.deletingTail || state.addingTail || state.addingByIndex}
           isLoader={state.deletingByIndex}
           extraClass={styles.big_button}
+          data-test="delete-from-index-button"
         />
       </div>
       <div className={styles.result}>

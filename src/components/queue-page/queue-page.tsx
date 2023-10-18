@@ -54,18 +54,21 @@ export const QueuePage: FC = () => {
           value={inputValue}
           onChange={(e) => handleChange(e)}
           extraClass="mr-25"
+          data-test="input"
         />
         <Button
           text="Добавить"
           disabled={inputValue ? false : true}
           onClick={addSymbol}
           isLoader={isLoader.initialLoaderQueue.add}
+          data-test="add-button"
         />
         <Button
           text="Удалить"
           disabled={queue.head === queue.tail ? true : false || isLoader.initialLoaderQueue.add}
           onClick={deleteSymbol}
           isLoader={isLoader.initialLoaderQueue.delete}
+          data-test="delete-button"
         />
         <Button
           text="Очистить"
@@ -73,6 +76,7 @@ export const QueuePage: FC = () => {
           onClick={clear}
           isLoader={isLoader.initialLoaderQueue.clear}
           extraClass="ml-40"
+          data-test="clear-button"
         />
       </form>
       <div className={styles.result}>

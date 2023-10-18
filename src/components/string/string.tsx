@@ -1,5 +1,5 @@
 import styles from './string.module.css'
-import { FC, useState, FormEvent, SyntheticEvent } from "react"
+import { FC, useState, SyntheticEvent } from "react"
 import { SolutionLayout } from "../ui/solution-layout/solution-layout"
 import { Input } from '../ui/input/input'
 import { Button } from '../ui/button/button'
@@ -16,8 +16,7 @@ export const StringComponent: FC = () => {
 
   const handleChange = (e: SyntheticEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)
 
-  const stringToArr = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const stringToArr = () => {
     const createArr = inputValue.split("").map((item: string) => {
       return {
         name: item,
@@ -30,9 +29,10 @@ export const StringComponent: FC = () => {
   const createElement = async (arr: TInput[]) => {
     setLoader(true);
     const mid = Math.floor(arr.length / 2)
-
+    await delay(DELAY_IN_MS)
     for (let i = 0; i < mid; i++) {
       let j = arr.length - 1 - i
+      
       if (i !== j) {
         arr[i].color = ElementStates.Changing
         arr[j].color = ElementStates.Changing
@@ -51,14 +51,14 @@ export const StringComponent: FC = () => {
     <SolutionLayout
       title="Строка"
     >
-      <form
+      <div
         className={styles.container}
-        onSubmit={stringToArr}
       >
         <Input
           isLimitText={true}
           maxLength={11}
           onChange={(e) => handleChange(e)}
+          data-test="input"
         />
         <Button
           type="submit"
@@ -66,8 +66,10 @@ export const StringComponent: FC = () => {
           text="Развернуть"
           disabled={!inputValue.length}
           linkedList="small"
+          data-test="button"
+          onClick={stringToArr}
         />
-      </form>
+      </div>
       <div className={styles.result}>
         {stringArr.map((item: TInput, index: number) => (
           <Circle 

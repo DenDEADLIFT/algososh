@@ -4,16 +4,15 @@ import { SolutionLayout } from '../ui/solution-layout/solution-layout'
 import { Button } from '../ui/button/button'
 import { TValueNumber } from '../../types/element-states'
 import { Direction } from '../../types/direction'
-import { useBubbleSort } from './bubble-sort-alg'
-import { useSelectionSort } from './selection-sort-alg'
+import { bubbleSort } from './bubble-sort-alg'
+import { selectionSort } from './selection-sort-alg'
 import { Column } from '../ui/column/column'
 import { RadioInput } from '../ui/radio-input/radio-input'
 import { newArray } from '../../utils/random-array'
 
 export const SortingPage: FC = () => {
-
-  const { bubbleSort, arr } = useBubbleSort()
-  const { selectionSort, arrSelect } = useSelectionSort()
+ 
+  const [arr, setArr] = useState<TValueNumber[]>([])
   const [numbersArr, setMumbersArr] = useState<TValueNumber[]>(newArray(3, 17))
   const [checkbox, setCheckbox] = useState('select')
   const [onTop, setOnTop] = useState<boolean>(false)
@@ -27,10 +26,10 @@ export const SortingPage: FC = () => {
     setOnTop(true)
     setOnDown(false)
     if (checkbox === "select") {
-      await selectionSort(true, numbersArr)
-      setMumbersArr(arrSelect)
+      await selectionSort(true, numbersArr, setArr)
+      setMumbersArr(arr)
     } else {
-      await bubbleSort(true, numbersArr)
+      await bubbleSort(true, numbersArr, setArr)
       setMumbersArr(arr)
     }
     setOnTop(false)
@@ -40,10 +39,10 @@ export const SortingPage: FC = () => {
     setOnTop(false)
     setOnDown(true)
     if (checkbox === "select") {
-      await selectionSort(false, numbersArr)
-      setMumbersArr(arrSelect)
+      await selectionSort(false, numbersArr, setArr)
+      setMumbersArr(arr)
     } else {
-      await bubbleSort(false, numbersArr)
+      await bubbleSort(false, numbersArr, setArr)
       setMumbersArr(arr)
     }
     setOnDown(false)

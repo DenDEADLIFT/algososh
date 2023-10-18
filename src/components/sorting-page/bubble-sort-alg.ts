@@ -2,7 +2,6 @@ import { TValueNumber, ElementStates } from '../../types/element-states'
 import { SHORT_DELAY_IN_MS, delay } from '../../constants/delays'
 import { swap } from '../string/string-alg'
 
-
 export const bubbleSort = async (onTop: boolean, arr: TValueNumber[], setArr: (newArr: TValueNumber[]) => void) => {
 
   for (let i = 0; i < arr.length; i++) {
@@ -27,7 +26,6 @@ export const bubbleSort = async (onTop: boolean, arr: TValueNumber[], setArr: (n
       await delay(SHORT_DELAY_IN_MS)
     }
   }
-console.log(arr)
   arr.map((i: TValueNumber) => { i.color = ElementStates.Modified })
   return arr
 }
